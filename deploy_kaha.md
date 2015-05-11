@@ -23,10 +23,11 @@ repo is shared with the docker container so that code changes are picked up.
 requires a redis container running locally, which you can do before running the
 script:
 
+    mkdir ~/data
     docker run -d --name redis -v ~/data:/data:rw -p 6379:6379 redis
 
 We make a folder to store all redis data and share it with the container. This allows
-us to make cron backups of the redis data from host server.
+us to make cron backups of redis data from the host server.
 
 It is recommended to set a password in a redis config file (add the line `requirepass password`)
 and share it with the container, for some security.
@@ -113,7 +114,7 @@ building the image locally, or you can host your own private docker registry.
 
 * Only trigger deploy on pushes to master
 * Deploy without downtime (nginx proxy to balance between the new and old docker containers)
-* Validation for local db setup
 * Better logging
 * Logfile upload to slack?
 * Add codeship intgeration to the deploy workflow when we add tests
+* ~~Validation for local db setup~~
