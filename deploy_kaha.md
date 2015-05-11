@@ -23,7 +23,20 @@ repo is shared with the docker container so that code changes are picked up.
 requires a redis container running locally, which you can do before running the
 script:
 
-    docker run -d --name redis -p 6379:6379 redis
+    docker run -d --name redis -v ~/data:/data:rw -p 6379:6379 redis
+
+We make a folder to store all redis data and share it with the container. This allows
+us to make cron backups of the redis data from host server.
+
+It is recommended to set a password in a redis config file (add the line `requirepass password`)
+and share it with the container, for some security.
+
+    docker run -d --name redis \
+      -v ~/data:/data:rw \
+      -v $(pwd)/redis.conf:/usr/local/etc/redis/redis.conf \
+      -p 6379:6379 \
+      redis \
+      redis-server /usr/local/etc/redis/redis.conf
 
 ## Managing docker containers
 
