@@ -1,8 +1,8 @@
 module.exports = {
   "prod": {
     "name": "prod",
-    "dbhost": "pub-redis-10191.us-east-1-4.2.ec2.garantiadata.com",
-    "dbport": 10191
+    "dbhost": process.env.DB_PORT_6379_TCP_ADDR || 'localhost',
+    "dbport": 6379
   },
   "stage": {
     "name": "stage",

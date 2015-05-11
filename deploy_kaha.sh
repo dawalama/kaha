@@ -113,10 +113,10 @@ case "$env" in
     #docker run -d --name "$container" -e "NODE_ENV=stage" -p "$APP_PORT:$APP_PORT" "$DOCKER_IMAGE"
     ;;
   prod)
-    # with remote db. db password needs to be set
-    docker run -d --name "$container" -e "NODE_ENV=prod" -e "DBPWD=${PROD_DB_PASS}" -p "$APP_PORT:$APP_PORT" "$DOCKER_IMAGE" npm run prod
-    # with local db. file config/index.js needs to be changed though (see dev config there)
-    #docker run -d --name "$container" -e "NODE_ENV=prod" -e "DBPWD=${PROD_DB_PASS}" -p "$APP_PORT:$APP_PORT" --link ${DB_CONTAINER}:db "$DOCKER_IMAGE" npm run prod
+    # with remote db. db password needs to be set. file config/index.js needs to have remote db entry
+    #docker run -d --name "$container" -e "NODE_ENV=prod" -e "DBPWD=${PROD_DB_PASS}" -p "$APP_PORT:$APP_PORT" "$DOCKER_IMAGE" npm run prod
+    # with local db. file config/index.js needs to have local db entry
+    docker run -d --name "$container" -e "NODE_ENV=prod" -e "DBPWD=${PROD_DB_PASS}" -p "$APP_PORT:$APP_PORT" --link ${DB_CONTAINER}:db "$DOCKER_IMAGE" npm run prod
     ;;
 esac
 
