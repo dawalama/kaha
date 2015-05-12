@@ -34,7 +34,7 @@
                 <button class="button button-small button-stable" ng-click="decrStat('yes')" ng-show="isButtonDisabled('yes')">
                     Undo
                 </button>
-                <span style="color:green">{{stat.yes ? stat.yes : 0}} reported receiving help from here</span>
+                <span>{{stat.yes ? stat.yes : 0}} reported receiving help from here</span>
             </div>
 
             <div  style="color:red">
@@ -44,7 +44,7 @@
                 <button class="button button-small button-stable" ng-click="decrStat('no')" ng-show="isButtonDisabled('no')">
                     Undo
                 </button>
-                <span style="color:red">{{stat.no ? stat.no : 0}} reported supply no longer available</span>
+                <span>{{stat.no ? stat.no : 0}} reported supply no longer available</span>
             </div>
         </div>
     <div class="item" ng-if="selectedItem.channel == 'need'">
@@ -55,7 +55,7 @@
                 <button class="button button-small button-stable" ng-click="decrStat('no_connection')" ng-show="isButtonDisabled('no_connection')">
                     Undo
                 </button>
-                <span style="color:green">{{stat.no_connection ? stat.no_connection : 0}} reported no-contact</span>
+                <span>{{stat.no_connection ? stat.no_connection : 0}} reported no-contact</span>
             </div>
 
             <div  style="color:green">
@@ -65,7 +65,7 @@
                 <button class="button button-small button-stable" ng-click="decrStat('yes')" ng-show="isButtonDisabled('yes')">
                     Undo
                 </button>
-                <span style="color:red">{{stat.yes ? stat.yes : 0}} reported need full-filled</span>
+                <span >{{stat.yes ? stat.yes : 0}} reported need full-filled</span>
             </div>
         </div>
     </div>
