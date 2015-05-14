@@ -7,6 +7,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'plexusSelect'])
 
 .run(function($ionicPlatform) {
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,7 +22,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.config(function($compileProvider, $stateProvider, $urlRouterProvider) {
+.config(function($ionicConfigProvider, $compileProvider, $stateProvider, $urlRouterProvider) {
+
+	if(!ionic.Platform.isIOS())$ionicConfigProvider.scrolling.jsScrolling(false);
 
 	//Disable debug data for PROD
 	if (ENV === 'prod') {
