@@ -52,18 +52,19 @@ If you are on ubuntu, you might have to do some
 work to make the port 3000 accessible. You can get around this by explicitly
 mapping the container/host ports (-p option, see below).
 
-If you want to develop with the docker containers, clone the repo and run this
+If you want to develop from the docker container, clone the repo and run this
 from the repo root directory:
 
     docker run --name kaha_stage -v $(pwd):/kaha -p 3000:3000 kahaco/kaha
 
 This creates a docker container called `kaha_stage` based on the kaha image,
 with the repo dir used as a shared volume inside the container (so that code
-changes are picked up).
+changes are picked up). `npm install` might be needed to pick up the local
+node modules.
 
-If you want your own local db setup, you can use run `deploy_kaha.sh dev` (which
-has some other nice features, read [deploy notes](deploy_kaha.md). This is the
-recommended way, but docker-compose support is also available.
+If you want your own local db setup, use `deploy_kaha.sh`, following the
+instructions from [deploy notes](deploy_kaha.md). This is the recommended way,
+but docker-compose support is also available.
 
     sudo pip install docker-compose && docker-compose up
 
